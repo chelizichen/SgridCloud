@@ -7,3 +7,6 @@
 [submodule "SgridExpansion"]
 	path = SgridExpansion
 	url = https://github.com/chelizichen/SgridExpansion.git
+[submodule "SgridJava"]
+	path = SgridJava
+	url = https://github.com/chelizichen/SgridJava.git
