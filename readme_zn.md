@@ -1,8 +1,8 @@
 <h2 align="center" style="color:rgb(207, 15, 124)">SgridCloud</h2>
 
 <h5 align="center" style="color:rgb(207, 15, 150)">
-SgridCloud is built for personal developers or startups and in
-cludes a complete set of development to production processes
+SgridCloud是为个人开发者或初创公司构建的，
+它包括一整套开发到生产的流程
 </h5>
 
 [中文介绍](./readme_zn.md)
@@ -19,15 +19,17 @@ cludes a complete set of development to production processes
 
 ***
 
+
+
 **Feature ::**
 
-1. Configuration Central
-2. Release Document Record
-3. Release Version Control
-4. Dynamic Expansion
-5. Multiple Nodes Manage
-6. Servant Group Manage
-7. Logger Search
-8. KeepAlive Check
+1. 控制中心
+2. 发布文档记录
+3. 发布版本控制
+4. 动态扩容
+5. 多节点管理
+6. 服务组管理
+7. 日志查询
+8. 心跳检测
 
-With SgridCloud, you can Make Develop Easily and Deploy Faster;
+有了SgridCloud，您可以轻松开发，更快部署；
