@@ -1,7 +1,9 @@
-[submodule "Sgrid-Go"]
-	path = Sgrid-Go
+[submodule "Sgrid"]
+	path = Sgrid
 	url = https://github.com/chelizichen/Sgrid.git
-
-[submodule "Sgrid-Node"]
+[submodule "SgridNode"]
 	path = SgridNode
 	url = https://github.com/chelizichen/SgridNode.git
+[submodule "SgridExpansion"]
+	path = SgridExpansion
+	url = https://github.com/chelizichen/SgridExpansion.git
