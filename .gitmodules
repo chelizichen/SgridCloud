@@ -10,3 +10,9 @@
 [submodule "SgridJava"]
 	path = SgridJava
 	url = https://github.com/chelizichen/SgridJava.git
+[submodule "SgirdServers/SgridPythonChatServer"]
+	path = SgirdServers/SgridPythonChatServer
+	url = https://github.com/chelizichen/SgridPythonChatServer.git
+[submodule "SgirdServers/LTSNodeServer"]
+	path = SgirdServers/LTSNodeServer
+	url = https://github.com/chelizichen/LTSNodeServer.git
