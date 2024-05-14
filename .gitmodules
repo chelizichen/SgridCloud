@@ -19,3 +19,6 @@
 [submodule "SgirdServers/ShopServer"]
 	path = SgirdServers/ShopServer
 	url = https://github.com/chelizichen/ShopServer.git
+[submodule "SgridPython"]
+	path = SgridPython
+	url = https://github.com/chelizichen/SgridPython.git
