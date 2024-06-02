@@ -8,7 +8,7 @@ SgridCloud是为个人开发者或初创公司构建的，
 [中文介绍](./readme_zn.md)
 
 ***
-<h4 align="center">HomePage</h4>
+<h4 align="center">Home</h4>
 <img src="./note/grid0424.png" />
 
 <h4 align="center">Release</h4>
@@ -17,6 +17,11 @@ SgridCloud是为个人开发者或初创公司构建的，
 <h4 align="center">Logger</h4>
 <img src="./note/logger.png" />
 
+<h4 align="center">Statictics</h4>
+<img src="./note/statistics.png" />
+
+<h4 align="center">Admin</h4>
+<img src="./note/admin.png" />
 ***
 
 

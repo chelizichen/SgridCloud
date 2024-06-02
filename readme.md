@@ -10,7 +10,7 @@ Start - [SgridNode](./SgridNode/readme.md)
 [中文介绍](./readme_zn.md)
 
 ***
-<h4 align="center">HomePage</h4>
+<h4 align="center">Home</h4>
 <img src="./note/grid0424.png" />
 
 <h4 align="center">Release</h4>
@@ -19,6 +19,11 @@ Start - [SgridNode](./SgridNode/readme.md)
 <h4 align="center">Logger</h4>
 <img src="./note/logger.png" />
 
+<h4 align="center">Statictics</h4>
+<img src="./note/statistics.png" />
+
+<h4 align="center">Admin</h4>
+<img src="./note/admin.png" />
 ***
 
 **Feature ::**
