@@ -1,3 +1,5 @@
 .vscode
 
 prod
+
+node_modules
