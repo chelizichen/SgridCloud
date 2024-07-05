@@ -9,8 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["SgridCloud","Vite","Release Script"],
+  "author": "chelizichen",
   "license": "ISC",
   "dependencies": {
     "@types/fs-extra": "^11.0.4",
