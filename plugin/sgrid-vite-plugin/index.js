@@ -29,7 +29,9 @@ var buildStep = async function () {
 
 var installStep = async function () {
   return new Promise((__resolve__) => {
-    const build = exec("npm install --production", { cwd: resolve(cwd, ".sgrid") });
+    const build = exec("npm install --production", {
+      cwd: resolve(cwd, ".sgrid"),
+    });
     build.stdout.on("data", function (chunk) {
       console.log(chunk.toString());
     });
@@ -42,37 +44,37 @@ var installStep = async function () {
   });
 };
 
-var toTgzStep = function(serverName){
-    return new Promise((__resolve__) => {
-        const build = exec(`tar -cvf ${serverName} ./* `, { cwd: resolve(cwd, ".sgrid") });
-        build.stdout.on("data", function (chunk) {
-          console.log(chunk.toString());
-        });
-        build.stderr.on("data", function (chunk) {
-          console.error(chunk.toString());
-        });
-        build.on("exit", function (code) {
-          __resolve__(code);
-        });
-      });
-}
+var toTgzStep = function (serverName) {
+  return new Promise((__resolve__) => {
+    const build = exec(`tar -cvf ${serverName} ./* `, {
+      cwd: resolve(cwd, ".sgrid"),
+    });
+    build.stdout.on("data", function (chunk) {
+      console.log(chunk.toString());
+    });
+    build.stderr.on("data", function (chunk) {
+      console.error(chunk.toString());
+    });
+    build.on("exit", function (code) {
+      __resolve__(code);
+    });
+  });
+};
 
-var rmdir = function(){
-    return new Promise((__resolve__) => {
-        const build = exec(`rm -r .sgrid`, { cwd: resolve() });
-        build.stdout.on("data", function (chunk) {
-          console.log(chunk.toString());
-        });
-        build.stderr.on("data", function (chunk) {
-          console.error(chunk.toString());
-        });
-        build.on("exit", function (code) {
-          __resolve__(code);
-        });
-      });
-}
-
-
+var rmdir = function () {
+  return new Promise((__resolve__) => {
+    const build = exec(`rm -r .sgrid`, { cwd: resolve() });
+    build.stdout.on("data", function (chunk) {
+      console.log(chunk.toString());
+    });
+    build.stderr.on("data", function (chunk) {
+      console.error(chunk.toString());
+    });
+    build.on("exit", function (code) {
+      __resolve__(code);
+    });
+  });
+};
 
 program
   .version("1.0.0")
@@ -84,31 +86,54 @@ program
   .description("build a vite client server")
   .action(async function (args, opt) {
     console.log("args", args);
-    var rmCode  = await rmdir()
-    var code    = await buildStep(args.build);
-    console.info('rmCode',rmCode);
-    console.info('code',code);
-    var serverName  =   args.serverName;
-    var buildName   =   `${serverName}.tar.gz`;
-    var buildTarget =   resolve(`.sgrid/${buildName}`);
-    var dist        =   args.dist;
-    var getPath     =   args.path;
-    mkdirSync(      resolve(".sgrid"));
-    writeFileSync(  resolve(".sgrid/app.js"),         replacePath(getPath));
-    writeFileSync(  resolve(".sgrid/package.json"),   packageJson());
-    fse.moveSync(   resolve(dist), resolve(".sgrid/dist"));
-    var installCode =   await installStep()
-    var tgzCode =       await toTgzStep(buildName)
-    console.info('installCode',installCode);
-    console.info('tgzCode',tgzCode);
-    });
+    var rmCode = await rmdir();
+    var code = await buildStep(args.build);
+    console.info("rmCode", rmCode);
+    console.info("code", code);
+    var serverName = args.serverName;
+    var buildName = `${serverName}.tar.gz`;
+    var buildTarget = resolve(`.sgrid/${buildName}`);
+    var dist = args.dist;
+    var getPath = args.path;
+    mkdirSync(resolve(".sgrid"));
+    writeFileSync(resolve(".sgrid/app.js"), replacePath(getPath));
+    writeFileSync(resolve(".sgrid/package.json"), packageJson());
+    fse.moveSync(resolve(dist), resolve(".sgrid/dist"));
+    var installCode = await installStep();
+    var tgzCode = await toTgzStep(buildName);
+    console.info("installCode", installCode);
+    console.info("tgzCode", tgzCode);
+  });
 
+program
+  .version("1.0.0")
+  .command("release:static")
+  .option("-s,--serverName [string]", "build tgz name!", "sgridWebServer")
+  .option("-d,--dist       [string]", "dist path!", "dist")
+  .option("-p,--path       [string]", "get path!", "web")
+  .description("build a vite client server")
+  .action(async function (args, opt) {
+    console.log("args", args);
+    var rmCode = await rmdir();
+    console.info("rmCode", rmCode);
+    var serverName = args.serverName;
+    var buildName = `${serverName}.tar.gz`;
+    var buildTarget = resolve(`.sgrid/${buildName}`);
+    var dist = args.dist;
+    var getPath = args.path;
+    mkdirSync(resolve(".sgrid"));
+    writeFileSync(resolve(".sgrid/app.js"), replacePath(getPath));
+    writeFileSync(resolve(".sgrid/package.json"), packageJson());
+    fse.moveSync(resolve(dist), resolve(".sgrid/dist"));
+    var installCode = await installStep();
+    var tgzCode = await toTgzStep(buildName);
+    console.info("installCode", installCode);
+    console.info("tgzCode", tgzCode);
+  });
 program.parse(process.argv);
 
-
-
 var replacePath = function (getPath) {
-    var tmp = `
+  var tmp = `
   "use strict";
   var __importDefault = (this && this.__importDefault) || function (mod) {
       return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -124,12 +149,12 @@ var replacePath = function (getPath) {
   boost();
   
       `;
-  
-    return tmp.replace(/\[REPLACE_PATH\]/,getPath);
-  };
-  
-  var packageJson = function () {
-    return `
+
+  return tmp.replace(/\[REPLACE_PATH\]/, getPath);
+};
+
+var packageJson = function () {
+  return `
       {
     "name": "test",
     "version": "1.0.0",
@@ -155,4 +180,4 @@ var replacePath = function (getPath) {
     }
   }
       `;
-  };
+};
