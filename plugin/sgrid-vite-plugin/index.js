@@ -79,7 +79,7 @@ var rmdir = function () {
 program
   .version("1.0.0")
   .command("release:vite")
-  .option("-s,--serverName [string]", "build tgz name!", "sgridWebServer")
+  .option("-s,--serverName [string]", "build assets name!", "sgridWebServer")
   .option("-d,--dist       [string]", "dist path!", "dist")
   .option("-b,--build      [string]", "command build!", "npm run build")
   .option("-p,--path       [string]", "get path!", "web")
@@ -130,6 +130,64 @@ program
     console.info("installCode", installCode);
     console.info("tgzCode", tgzCode);
   });
+
+
+
+var syncRunCommand = function(cmd){
+  return new Promise((resolve)=>{
+    var cwd = process.cwd()
+    var build = exec(cmd, { cwd });
+    build.stdout.on("data", function (chunk) {
+      console.log(chunk.toString());
+    });
+    build.stderr.on("data", function (chunk) {
+      console.error(chunk.toString());
+    });
+    build.on("exit", function (code) {
+      resolve(code)
+    });
+  })
+}
+
+program
+  .version("1.0.0")
+  .command("run:springboot")
+  .description("run springboot")
+  .action(async function(){
+    await syncRunCommand('mvn spring-boot:run')
+  });
+
+
+// release
+var springboot = {}
+
+springboot.removePrevPackage = async function(svrName){
+  var cwd = process.cwd()
+  var svrPkgPath = path.join(cwd, svrName)
+  if(fse.existsSync(svrPkgPath)){
+    return await syncRunCommand(`rm -rf ${svrPkgPath}`)
+  }
+}
+springboot.buildMaven = async function(){
+  await syncRunCommand(`mvn compile`)
+  await syncRunCommand(`mvn deploy`)
+}
+springboot.buildAssets = async function(svrName){
+  await syncRunCommand(`tar -cvf ${svrName}.tar.gz ./target`)
+}
+
+program
+  .version("1.0.0")
+  .command("release:springboot")
+  .option("-s,--serverName [string]", "build assets name!", "sgridJavaServer")
+  .description("release springboot")
+  .action(async function(args){
+    var serverName = args.serverName;
+    await springboot.removePrevPackage(serverName)
+    await springboot.buildMaven()
+    await springboot.buildAssets(serverName)
+  });
+
 program.parse(process.argv);
 
 var replacePath = function (getPath) {
