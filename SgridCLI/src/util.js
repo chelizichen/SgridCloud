@@ -1,8 +1,11 @@
-var { exec } = require("child_process");
+"use strict";
 
-var syncRunCommand = function (cmd) {
+var { exec } = require("child_process");
+var path = require("path");
+
+var syncRunCommand = function (cmd, p) {
   return new Promise((resolve) => {
-    var cwd = process.cwd();
+    var cwd = p ? path.resolve(process.cwd(), p) : process.cwd();
     var build = exec(cmd, { cwd });
     build.stdout.on("data", function (chunk) {
       console.log(chunk.toString());
