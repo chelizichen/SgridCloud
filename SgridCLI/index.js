@@ -102,9 +102,9 @@ program
     var serverName = args.serverName;
     var build = args.build;
     var dist = args.dist;
-    var public = args.public;
+    var publicPath = args.public;
     syncRunCommand(build);
-    syncRunCommand(`copy -r ${public} ./${dist}/${public}`);
+    syncRunCommand(`copy -r ${publicPath} ./${dist}/${publicPath}`);
     syncRunCommand(`copy package.json ./${dist}/package.json`);
     syncRunCommand(`copy package-lock.json ./${dist}/package-lock.json`);
     syncRunCommand(`npm i`, dist);
