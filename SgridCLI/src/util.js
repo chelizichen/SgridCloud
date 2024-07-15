@@ -1,6 +1,7 @@
 "use strict";
 
 var { exec } = require("child_process");
+var process = require('process')
 var path = require("path");
 
 var syncRunCommand = function (cmd, p) {

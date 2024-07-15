@@ -38,7 +38,7 @@ program
   .option("-s,--serverName [string]", "build assets name!", "sgridWebServer")
   .option("-d,--dist       [string]", "dist path!", "dist")
   .option("-b,--build      [string]", "command build!", "npm run build")
-  .option("-p,--path       [string]", "get path!", "web")
+  .option("-p,--path       [string]", "get path!", "/web")
   .description("build a vite client server")
   .action(async function (args, opt) {
     console.log("args", args);
@@ -67,7 +67,7 @@ program
   .command("release:static")
   .option("-s,--serverName [string]", "build tgz name!", "sgridWebServer")
   .option("-d,--dist       [string]", "dist path!", "dist")
-  .option("-p,--path       [string]", "get path!", "web")
+  .option("-p,--path       [string]", "get path!", "/web")
   .description("build a vite client server")
   .action(async function (args, opt) {
     console.log("args", args);

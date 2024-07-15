@@ -1,10 +1,14 @@
 "use strict";
-
+var {exec} = require('child_process')
+var process = require('process')
+var resolve = require("./util").resolve;
+var cwd = process.cwd()
 var node = {};
 
 node.buildStep = async function () {
   return new Promise((resolve) => {
-    const build = exec("npm run build", { cwd });
+
+    var build = exec("npm run build", { cwd });
     build.stdout.on("data", function (chunk) {
       console.log(chunk.toString());
     });
