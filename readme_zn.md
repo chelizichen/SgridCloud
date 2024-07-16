@@ -1,40 +1,66 @@
-<h2 align="center" style="color:rgb(207, 15, 124)">SgridCloud</h2>
+<h2 align="center" style="display:flex;align-items:center;justify-content:center;">
+    <img src="http://150.158.120.244/sgirdcloud/web/icon.png" style="width:35px;height:35px;" />
+    <div>SgridCloud</div>
+</h2>
 
-<h5 align="center" style="color:rgb(207, 15, 150)">
-SgridCloud是为个人开发者或初创公司构建的，
-它包括一整套开发到生产的流程
+<h5 align="center">
+SgridCloud是一套运维监控系统，囊括了从开发到生产整个流程的运维操作，并且做到对系统侵入程度小于5%
 </h5>
 
-[中文介绍](./readme_zn.md)
+## 使用的技术栈
 
-***
-<h4 align="center">Home</h4>
-<img src="./note/grid0424.png" />
+1. 前端：Vue3 + TypeScript + Vite
+2. 缓存中间件：Redis
+3. 验证中间件：JWT
+4. 后台系统: Golang + Gin + Grpc
+5. 扩容系统: Nodejs16 + Express + TypeScript
+6. 数据库：Mysql8
 
-<h4 align="center">Release</h4>
-<img src="./note/release.png" />
+## 已验证过的系统
 
-<h4 align="center">Logger</h4>
-<img src="./note/logger.png" />
+1. MacOS
+2. Centos7
+3. Ali Centos
 
-<h4 align="center">Statictics</h4>
-<img src="./note/statistics.png" />
+PS: Windows理论上也支持，但未测试
 
-<h4 align="center">Admin</h4>
-<img src="./note/admin.png" />
-***
+## 已支持的语言
+
+1. NodeJS 14+
+2. SpringBoot 2+
+3. Golang
+
+PS：对于NodeJs+TypeScript服务，建议将 tsconfig.json 的 target 设置为 es6 以上，否则会出现兼容性问题
 
 
+## 支持的功能
 
-**Feature ::**
+1. 多语言服务部署
+2. 远程配置中心
+3. 日志监控与查询
+4. 多节点组管理
+5. 多服务组管理
+6. 服务版本控制
+7. 服务健康检查
+8. 系统信息统计
+9. Web化网关配置
 
-1. 控制中心
-2. 发布文档记录
-3. 发布版本控制
-4. 动态扩容
-5. 多节点管理
-6. 服务组管理
-7. 日志查询
-8. 心跳检测
+## 框架部署
 
-有了SgridCloud，您可以轻松开发，更快部署；
+TODO
+
+## 业务服务部署
+
+TODO
+
+## 维护者
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <a target="_blank" href="https://github.com/chelizichen"><img width="60px" src="https://avatars.githubusercontent.com/u/86051766?v=4"></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
