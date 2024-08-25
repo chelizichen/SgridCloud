@@ -81,3 +81,9 @@ type ServantPackage struct {
 	CreateTime string // 创建时间
 }
 ````
+
+## 群组优化
+
+1. 一个用户属于 1到N 个群组
+2. 一个群组拥有 0到N 个用户
+3. 一个群组 对应 N 个服务组
