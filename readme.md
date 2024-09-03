@@ -47,7 +47,17 @@ PS：对于NodeJs+TypeScript服务，建议将 tsconfig.json 的 target 设置�
 
 ## 框架部署
 
-TODO
+1. 进入Sgrid目录下，运行 prod.sh 脚本，打包成 Sgrid.tar.gz 压缩文件
+2. 在 linux 服务器下 /usr/ 目录下创建 app 目录 (mkdir app),将压缩文件移动到服务器中
+3. 解压 (tar -xvzf ./Sgrid.tar.gz)
+4. 配置文件修改 /usr/app/sgrid.yml 文件, 配置对应的 host ， mysql ， redis 等
+5. 创建目录 /usr/app/server/SgridPackageServer
+6. 首次运行 /usr/app/sgrid_app，会报错链接不到 grpc， 但是会创建数据库
+7. 去 mysql 数据库 grid_properties 里面手动添加对应的grpc链接数据
+   1. key : SgridPackageServerHosts value: server.SgridPackageServer@grpc -h 127.0.0.1 -p 14938
+   2. key : SgridLogTraceServerHosts value: server.SgridLogTraceServer@grpc -h 127.0.0.1 -p 15887
+   3. // TODO RBAC 基础数据
+8. 再次运行 /usr/app/sgrid_app，启动成功
 
 ## 业务服务部署
 
