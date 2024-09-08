@@ -138,4 +138,26 @@ program
     await golang.buildEXE(serverName, dist);
   });
 
+// 静态资源直接启动
+
+program
+  .version("1.0.0")
+  .command("run:static")
+  .option("-p,--publicPath [string]", "public path!", "/")
+  .description("run static server")
+  .action(async function (args) {
+    try {
+      var publicPath = args.publicPath || "/";
+      var port = Number(process.env.SGRID_TARGET_PORT) || 3844;
+      var express = require("express");
+      var path = require("path");
+      var app = express();
+      app.use(publicPath, express.static(path.resolve("./")));
+      app.listen(port, function () {
+        console.log("server start on port:", port);
+      });
+    } catch (error) {
+      console.error("sgrid run:static error", error);
+    }
+  });
 program.parse(process.argv);
