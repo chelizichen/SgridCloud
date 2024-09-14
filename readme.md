@@ -70,7 +70,13 @@ chmod +x ./build.sh
 
 cd ..
 ## build docker-image
-docker build -t sgrid-test:latest .
+sudo docker buildx build  --platform linux/amd64  --load -t sgrid-test:latest .
+## build macos
+docker build  -t sgrid-test:latest .
+
+docker tag sgrid-test:latest chelizichen/sgrid-release:version_os
+
+docker push chelizichen/sgrid-release:version_os
 ````
 
 ### run
@@ -80,15 +86,24 @@ docker build -t sgrid-test:latest .
 docker run  \
            --net=host \
            --name sgrid-container \
+           --add-host=host.docker.internal:host-gateway \
            sgrid-test:latest
 
-# macos 
+# macos (集中暴露100个端口供开发使用)
 
 docker run -d \
+           -p 10000-10100:10000-10100/tcp \
            -p 12111:12111 \
            -p 14938:14938 \
            -p 15887:15887 \
            --add-host=host.docker.internal:host-gateway \
+           --name sgrid-container \
+           --mount type=bind,source=/Users/leemulus/Desktop/SgridCloud/Sgrid/server/SgridPackageServer,target=/app/server/SgridPackageServer \
+           sgrid-test:latest
+
+# test
+docker run  \
+           --net=host \
            --name sgrid-container \
            sgrid-test:latest
 
