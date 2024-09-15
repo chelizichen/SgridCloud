@@ -63,19 +63,18 @@ docker push chelizichen/sgrid-release:version_os
                 docker.io/library/redis:latest \
                 redis-server /etc/redis/redis.conf
 4. 下载sgrid-release镜像 【 https://dockerpull.com/ 】
-   1. 设置外部目录 mkdir -p  /usr/app/server/SgridPackageServer
+   1. 设置外部目录 mkdir -p  /usr/app/server/SgridPackageServer | 并且在 /usr/app 目录下创建 sgrid.yml文件作为静态配置
    2. 将该路径指定为 docker 发布路径 并且做目录映射 ,参考文章【 https://zhuanlan.zhihu.com/p/671793715 】
    3. docker pull dockerproxy.cn/chelizichen/sgrid-release:0.0.18_x86
-   4. docker run -d \
-            -it --entrypoint /bin/sh \
-           -p 10000-10100:10000-10100/tcp \
-           -p 12111:12111 \
-           -p 14938:14938 \
-           -p 15887:15887 \
-           --add-host=host.docker.internal:host-gateway \
+   4. docker run \
+           -it --entrypoint /bin/sh \
+           --net=host \
+           -v /usr/app/sgrid.yml:/app/sgrid.yml \
            --name sgrid-cloud-server \
            --mount type=bind,source=/usr/app/server/SgridPackageServer,target=/app/server/SgridPackageServer \
            dockerproxy.cn/chelizichen/sgrid-release:0.0.18_x86
+    5. docker exec -it sgrid-cloud-server /bin/sh
+    6. 执行 ./main
 
 5. 一般会启动失败，这是数据库没连接上的原因，需要进入交互界面进行配置
    1. yum install lsof  先配置lsof命令
