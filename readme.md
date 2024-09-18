@@ -90,16 +90,13 @@ docker run  \
            sgrid-test:latest
 
 # macos (集中暴露100个端口供开发使用)
-
-docker run -d \
-           -p 10000-10100:10000-10100/tcp \
-           -p 12111:12111 \
-           -p 14938:14938 \
-           -p 15887:15887 \
-           --add-host=host.docker.internal:host-gateway \
-           --name sgrid-container \
+sudo docker run \
+           -it --entrypoint /bin/sh \
+           --net=host \
+           -v /Users/leemulus/Desktop/SgridCloud/Sgrid/sgrid.yml:/app/sgrid.yml \
+           --name sgrid-cloud-server \
            --mount type=bind,source=/Users/leemulus/Desktop/SgridCloud/Sgrid/server/SgridPackageServer,target=/app/server/SgridPackageServer \
-           sgrid-test:latest
+           chelizichen/sgrid-release:0.20.1_x86
 
 # test
 docker run  \
