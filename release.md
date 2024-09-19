@@ -86,6 +86,16 @@ docker push chelizichen/sgrid-release:version_os
    6. sudo docker exec -it sgrid-cloud-server /bin/sh
    7. ./main (首次建表)
    8. 然后配置相应参数
+6. 配置nginx https://cloud.tencent.com/developer/article/2015581
+  sudo docker run \
+  -p 80:80 \
+  --name nginx \
+  -v /home/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+  -v /home/nginx/conf/conf.d:/etc/nginx/conf.d \
+  -v /home/nginx/log:/var/log/nginx \
+  -v /home/nginx/html:/usr/share/nginx/html \
+  -d nginx:1.24.0
+
 
 sudo systemctl daemon-reload
 
