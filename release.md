@@ -73,7 +73,7 @@ docker push chelizichen/sgrid-release:version_os
            -v /etc/localtime:/etc/localtime \
            --name sgrid-cloud-server \
            --mount type=bind,source=/usr/app/server/SgridPackageServer,target=/app/server/SgridPackageServer \
-           chelizichen/sgrid-release:0.20.1_x86
+           dockerproxy.cn/chelizichen/sgrid-release:0.20.3_x86
     5. docker exec -it sgrid-cloud-server /bin/sh
     6. 执行 ./main
 
