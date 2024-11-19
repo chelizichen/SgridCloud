@@ -65,7 +65,7 @@ docker push chelizichen/sgrid-release:version_os
 4. 下载sgrid-release镜像 【 https://dockerpull.com/ 】
    1. 设置外部目录 mkdir -p  /usr/app/server/SgridPackageServer | 并且在 /usr/app 目录下创建 sgrid.yml文件作为静态配置
    2. 将该路径指定为 docker 发布路径 并且做目录映射 ,参考文章【 https://zhuanlan.zhihu.com/p/671793715 】
-   3. sudo docker pull dockerproxy.net/chelizichen/sgrid-release:0.20.4_x86
+   3. sudo docker pull dockerproxy.net/chelizichen/sgrid-release:0.20.5_x86
    4. sudo docker run \
            -it --entrypoint /bin/sh \
            --net=host \
@@ -73,7 +73,7 @@ docker push chelizichen/sgrid-release:version_os
            -v /etc/localtime:/etc/localtime \
            --name sgrid-cloud-server \
            --mount type=bind,source=/usr/app/server/SgridPackageServer,target=/app/server/SgridPackageServer \
-           dockerproxy.cn/chelizichen/sgrid-release:0.20.3_x86
+           dockerproxy.net/chelizichen/sgrid-release:0.20.5_x86
     5. docker exec -it sgrid-cloud-server /bin/sh
     6. 执行 ./main
 
