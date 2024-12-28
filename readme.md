@@ -110,6 +110,11 @@ docker run  \
 
 1. macos 本地启动时 sgrid.yml 里面的 host要进行对应的修改[参考链接](https://www.cnblogs.com/forlive/p/15989409.html#:~:text=%E5%9C%A8%E5%90%AF%E5%8A%A8docker%E6%97%B6%EF%BC%8C%E5%8A%A0%E5%85%A5%E5%A6%82%E4%B8%8B%E8%AF%AD%E5%8F%A5%20--add-host%3Dhost.docker.internal%3Ahost-gateway%20%E8%80%8C%E5%9C%A8container%E5%86%85%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E8%AF%B7%E6%B1%82host.docker.internal%3APORT%EF%BC%8C%E6%9D%A5%E8%8E%B7%E5%8F%96%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8A%E6%8F%90%E4%BE%9B%E7%9A%84%E5%90%84%E7%A7%8D%E6%9C%8D%E5%8A%A1%20%E5%A6%82%E6%9E%9C%E4%BD%BF%E7%94%A8%E4%BA%86Docker%20Compose%EF%BC%8C%E5%88%99%E5%BA%94%E8%AF%A5%E5%B0%86%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%8F%A5%E5%AD%90%E5%8A%A0%E5%85%A5container%E7%9A%84%E5%A3%B0%E6%98%8E%E4%B8%AD%EF%BC%9A%20extra_hosts%3A,-%20%22host.docker.internal%3Ahost-gateway%22%20Mac%E5%92%8CWindows%3A%20Docker%E7%89%88%E6%9C%AC%E9%AB%98%E4%BA%8Ev18.03%20%282018%E5%B9%B43%E6%9C%8821%E6%97%A5%E6%9B%B4%E6%96%B0%EF%BC%89%20%E7%9B%B4%E6%8E%A5%E5%9C%A8container%E5%86%85%E4%BD%BF%E7%94%A8host.docker.internal%3APORT%E6%9D%A5%E8%AE%BF%E9%97%AE%E5%AE%BF%E4%B8%BB%E6%9C%BA%E6%9C%8D%E5%8A%A1%E5%8D%B3%E5%8F%AF)
 
+## 优化性能提示
+
+1. 为 grid_stat_log 添加 (grid_id, create_time) 的索引，避免全扫描
+2. 定时清理业务服务日志数据，为业务服务日志添加索引，避免全扫描
+
 ## 业务服务部署
 
 1. 添加服务组，服务组的名称，英文名称，方便做管理
@@ -132,6 +137,8 @@ docker run  \
 2. 使得原本 jar、node、exe 的方式 可以得到进一步的扩展
 
 2024-09-08 ：扩展 sgrid-cli 启动静态资源托管服务的方式
+
+2024-12-28 ：优化框架性能、改造PackageServer部分旧代码
 
 ## 维护者
 
