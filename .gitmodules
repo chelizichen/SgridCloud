@@ -4,21 +4,9 @@
 [submodule "SgridNode"]
 	path = SgridNode
 	url = https://github.com/chelizichen/SgridNode.git
-[submodule "SgridExpansion"]
-	path = SgridExpansion
-	url = https://github.com/chelizichen/SgridExpansion.git
 [submodule "SgridJava"]
 	path = SgridJava
 	url = https://github.com/chelizichen/SgridJava.git
-[submodule "SgirdServers/SgridPythonChatServer"]
-	path = SgirdServers/SgridPythonChatServer
-	url = https://github.com/chelizichen/SgridPythonChatServer.git
-[submodule "SgirdServers/LTSNodeServer"]
-	path = SgirdServers/LTSNodeServer
-	url = https://github.com/chelizichen/LTSNodeServer.git
-[submodule "SgirdServers/ShopServer"]
-	path = SgirdServers/ShopServer
-	url = https://github.com/chelizichen/ShopServer.git
 [submodule "SgridPython"]
 	path = SgridPython
 	url = https://github.com/chelizichen/SgridPython.git
