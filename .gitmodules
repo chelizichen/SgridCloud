@@ -22,3 +22,6 @@
 [submodule "SgridPython"]
 	path = SgridPython
 	url = https://github.com/chelizichen/SgridPython.git
+[submodule "SgridGo"]
+	path = SgridGo
+	url = https://github.com/chelizichen/SgridGo.git
